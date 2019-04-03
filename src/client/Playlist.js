@@ -115,9 +115,7 @@ const Song = (props) => {
             <td >
                 {props.index + 1}. {props.name}
             </td>
-            <td>
-                {props.artist_id} - {props.artists[0].name}
-            </td>
+                Artist Name Here
             <td>
                 {props.length}
             </td>
