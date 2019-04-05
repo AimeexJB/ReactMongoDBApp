@@ -5,7 +5,7 @@ For this assignment we were tasked with developing a full stack web application,
 
 Heroku Site: [ReactMongoApp](https://reactmongoapp.herokuapp.com/ )
 
-##To get this project started,
+##To get this project started
 
 Clone the repository:
 ```
