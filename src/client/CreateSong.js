@@ -6,7 +6,14 @@ class CreateSong extends Component {
     constructor(props) {
         super(props);
         // store form fields in state
-        this.state = {name: '', length: '', album_name: '', album_cover: '', artist_id: '', artists: []};
+        this.state = {
+            name: '',
+            length: '',
+            album_name: '',
+            album_cover: '',
+            artist_id: '',
+            artists: []
+        };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,8 +40,6 @@ class CreateSong extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-
-        console.log(this.state.artist_id);
         // send a POST request to the server
         // the request includes the state, which is the info. for the new user to be created
         axios.post('/api/songs', this.state)

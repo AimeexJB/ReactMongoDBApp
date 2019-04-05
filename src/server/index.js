@@ -14,7 +14,6 @@ const dbname = 'ReactCA2';
 // serve files from the dist directory
 server.use(express.static('dist'));
 
-
 // const mongo_uri = process.env.MONGODB_URL || `mongodb://localhost:27017/${dbname}`;
 const mongo_uri = 'mongodb+srv://aimeeredmond:Barbie123@reactca2-kifoa.mongodb.net/ReactCA2?retryWrites=true';
 
@@ -108,5 +107,17 @@ server.put('/api/songs', (req, res) => {
         return res.send({ success: true });
     });
 });
+
+// Find song by an artist
+Song.findOne('name').
+    populate('artist').
+    exec(function(err, story) {
+        if (err) return handleError(err);
+        console.log('The author is %s', song.artist.name);
+    // prints "The author is Ian Fleming"
+    });
+
+
+
 
 server.listen(process.env.PORT || 8080, () => console.log(`Listening on port ${process.env.PORT || 8080}!`));
