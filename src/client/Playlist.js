@@ -10,6 +10,7 @@ class Playlist extends Component {
         super(props);
         this.state = { songs: [], artists: []};
 
+        this.getArtist = this.getArtist.bind(this);
     }
 
     componentDidMount() {
@@ -31,6 +32,23 @@ class Playlist extends Component {
             });
     }
 
+    // Tried to get the artist name that matched the song id displayed but it did not work
+    // however, it logs the name of the artist in the console
+    getArtist(artist_id) {
+        let name;
+
+        axios.get('api/artists/' + artist_id)
+            .then(response => {
+                name = response.data.name;
+                console.log(response.data.name);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
+        return name;
+    }
+
 
     render() {
 
@@ -43,7 +61,7 @@ class Playlist extends Component {
                 album={u.album_name}
                 cover={u.album_cover}
                 artist_id={u.artist_id}
-                handleDelete={this.handleDelete}
+                getArtist={this.getArtist}
                 index={index}
                 artists={this.state.artists}
             />
@@ -87,7 +105,7 @@ class Playlist extends Component {
                                 <thead>
                                     <tr>
                                         <th>Song Name</th>
-                                        <th>Artist</th>
+                                        <th></th>
                                         <th>Length</th>
                                     </tr>
                                 </thead>
@@ -115,7 +133,9 @@ const Song = (props) => {
             <td >
                 {props.index + 1}. {props.name}
             </td>
-                Artist Name Here
+            <td >
+                {props.getArtist(props.artist_id)}
+            </td>
             <td>
                 {props.length}
             </td>

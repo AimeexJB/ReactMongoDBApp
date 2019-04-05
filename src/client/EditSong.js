@@ -19,6 +19,7 @@ class EditSong extends Component {
     }
 
     componentDidMount() {
+        // Getting the data from the database and populating the fields with it
         axios.get('/api/songs/' + this.props.match.params.id)
             .then(response => {
                 this.setState({
@@ -36,6 +37,7 @@ class EditSong extends Component {
     }
 
     handleChange(event) {
+        // updating the state to match the input boxes
         const name = event.target.name;
         const value = event.target.value;
 

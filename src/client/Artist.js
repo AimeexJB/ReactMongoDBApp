@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Artist extends React.Component {
     render() {
@@ -20,7 +21,7 @@ class Artist extends React.Component {
                                         View Songs
                             </button>
                         </Link>
-                        
+
                     </div>
                 </div>
 
@@ -29,5 +30,11 @@ class Artist extends React.Component {
         );
     }
 }
+
+Artist.propTypes = {
+    name: PropTypes.string,
+    description: PropTypes.string,
+    photo: PropTypes.string
+};
 
 export default Artist;

@@ -15,7 +15,7 @@ class SongList extends Component {
     }
 
     componentDidMount() {
-    // when the component mounts, fetch the user data from the server
+        // getting the artist data from the server
         this.updateSongs();
 
         axios.get(`api/artists/${this.props.match.params.id}`)
@@ -29,7 +29,7 @@ class SongList extends Component {
 
 
     updateSongs() {
-    // make a GET request to the server for the user data, store it in state
+    // making a request to the server for the artists data and then storing it in state
         axios.get(`api/artists/${this.props.match.params.id}/songs`)
             .then(response => {
                 this.setState({ songs: response.data });
@@ -40,7 +40,7 @@ class SongList extends Component {
     }
 
     handleDelete(songId) {
-    // make a DELETE request to the server to remove the user with this userId
+        // making a delete request to the server to remove a song with a particular id
         axios
             .delete('api/songs', {
                 data: {
@@ -48,7 +48,7 @@ class SongList extends Component {
                 }
             })
             .then(response => {
-                // if delete was successful, re-fetch the list of users, will trigger a re-render
+                // if it was successful then it will re-get the new list of songs
                 this.updateSongs();
             })
             .catch(error => {

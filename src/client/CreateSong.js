@@ -5,7 +5,6 @@ import axios from 'axios';
 class CreateSong extends Component {
     constructor(props) {
         super(props);
-        // store form fields in state
         this.state = {
             name: '',
             length: '',
@@ -30,8 +29,7 @@ class CreateSong extends Component {
     }
 
     handleChange(event) {
-    // one of the input boxes changed, update the state to match
-    // note: name of the input boxes must match the property names in state
+        // updating the state to match the input boxes
         const name = event.target.name;
         const value = event.target.value;
 
@@ -40,8 +38,7 @@ class CreateSong extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        // send a POST request to the server
-        // the request includes the state, which is the info. for the new user to be created
+        // sending the post request which includes the info for the new user to be sent to the database
         axios.post('/api/songs', this.state)
             .then(response => {
                 this.props.history.push('/');
@@ -52,7 +49,6 @@ class CreateSong extends Component {
     }
 
     render() {
-    // note: name of the inputs must match the property names in state
         return (
             <div className="uk-container">
                 <form onSubmit={this.handleSubmit} className="uk-form-horizontal uk-margin-large">

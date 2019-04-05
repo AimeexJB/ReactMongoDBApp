@@ -11,7 +11,6 @@ const Song = require('./models/Song');
 const server = express();
 const dbname = 'ReactCA2';
 
-// serve files from the dist directory
 server.use(express.static('dist'));
 
 // const mongo_uri = process.env.MONGODB_URL || `mongodb://localhost:27017/${dbname}`;
@@ -108,16 +107,16 @@ server.put('/api/songs', (req, res) => {
     });
 });
 
-// Find song by an artist
-Song.findOne('name').
-    populate('artist').
-    exec(function(err, story) {
-        if (err) return handleError(err);
-        console.log('The author is %s', song.artist.name);
-    // prints "The author is Ian Fleming"
-    });
-
-
+// populate
+// server.get('/api/songs', (req, res) => {
+//     Song.findOne('name').
+//         populate('artist').
+//         exec(function(err, story) {
+//             if (err) return handleError(err);
+//             console.log('The author is %s', song.artist.name);
+//         // prints "The author is Ian Fleming"
+//         });
+// });
 
 
 server.listen(process.env.PORT || 8080, () => console.log(`Listening on port ${process.env.PORT || 8080}!`));
